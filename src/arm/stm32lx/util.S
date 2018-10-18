@@ -39,7 +39,8 @@ delay:
     // void wr_fl_hp (uint32_t* dst, uint32_t* src)
     // write flash half-page (DO NOT CALL DIRECTLY!)
     // r0: dst*, r1: src*, r2-r5: scratch
-    .section .boot.wr_fl_hp,"ax",%progbits
+    // .section .boot.wr_fl_hp,"ax",%progbits
+    .section .data.wr_fl_hp,"ax",%progbits
     .thumb_func
 wr_fl_hp_begin:
 	push {r4-r5, lr}

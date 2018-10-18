@@ -18,3 +18,14 @@ MEMORY {
     BLFLASH(rx)	: ORIGIN = 0x08000000, LENGTH = 12K
     FWFLASH(rx)	: ORIGIN = 0x08000000 + LENGTH(BLFLASH), LENGTH = 128K - LENGTH(BLFLASH)
 }
+
+SECTIONS {
+    .boot : {
+	. = ALIGN(4);
+	KEEP(*(.boot.isr_vector))
+	. = ALIGN(4);
+	*(.boot*)
+	*(.text*)
+	*(.rodata*)
+    } >BLFLASH
+}

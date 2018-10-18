@@ -16,12 +16,14 @@
 #ifndef _update_h_
 #define _update_h_
 
-uint32_t update (void* ctx, boot_uphdr* fwup, bool install);
+uint32_t update(void* ctx, boot_uphdr* fwup, bool install);
 
 // glue functions
-extern uint32_t up_install_init (void* ctx, uint32_t size, void** pdst);
-extern void up_flash_wr_page (void* ctx, void* dst, void* src);
-extern void up_flash_unlock (void* ctx);
-extern void up_flash_lock (void* ctx);
+extern uint32_t up_install_init(void* ctx, uint32_t size, void** pdst);
+extern uint32_t up_install_jpatch_init(void* ctx, uint32_t size, void** pdst, void** psrc,
+                                       uint32_t* src_sz);
+extern void up_flash_wr_page(void* ctx, void* dst, const void* src);
+extern void up_flash_unlock(void* ctx);
+extern void up_flash_lock(void* ctx);
 
 #endif
